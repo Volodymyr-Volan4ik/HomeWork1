@@ -1,23 +1,20 @@
 from datetime import datetime
 
-def get_days_from_today():
-        try:
-            current_date = datetime.today()
+date = "2024-12-18"
 
-            user_input = input("Введите дату в формате ГГГГ-ММ-ДД: ")
+def get_days_from_today(date):
 
-            user_date = datetime.strptime(user_input, "%Y-%m-%d")
+    try:
 
-            difference = current_date - user_date
+            date1 = datetime.strptime(date, "%Y-%m-%d")
 
-            print(f"Разница между сегодня и введенной датой: {difference} дней")
+    except ValueError:
+         
+         return "Ошибка: Неправильный формат даты. Используйте формат YYYY-MM-DD."
 
-            get_days_from_today()
+    current_date = datetime.today()
 
-        except ValueError:
+    difference = current_date - date1
 
-            print("Ошибка: Неправильный формат даты. Используйте формат ГГГГ-ММ-ДД.")
-
-            get_days_from_today()
-
-get_days_from_today()
+    return difference.days
+get_days_from_today(date)
